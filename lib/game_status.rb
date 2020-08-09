@@ -29,7 +29,7 @@ def full?(board)
 end
 
 def draw?(board)
-  board.full? && !(board.won?)
+  full?(board) && !(won?(board))
   # returns true if the board has not been won but is full
   # false if the board is not won and the board is not ful
   # false if the board is won
@@ -37,11 +37,41 @@ def draw?(board)
 end
 
 def over?(board)
+  full?(board) || draw?(board) || won?(board)
   # returns true if the board has been won, is a draw, or is full
   # compose this method solely using the methods you used above with some ruby logic
 end
 
 def winner(board)
+  if won?(board) == nil
+    nil
+  else
+    winning = won?(board)
+    winner = board[winning[0]]
+  end
+end
+
+
+
+
+
+  #moves = []
+  #if won?(board)
+  #  board.select do |x|
+  #    moves << x != " "
+  #  end
+  #end
+  #print "move length: "
+  #print moves.length()
+  #moves.length() % 2 == 0 ? winner = "O" : winner = "X"
   # return the token, "X" or "O" that has won the game given a winning board
   # this method can be greatly simplified by using the methods and their return values you defined above
-end
+
+
+#board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
+#print board.draw?
+
+#print ["X", "O", "X", "O", "X", "X", "O", "X", " "].full?
+
+#print "check"
+#print won?(["X", " ", " ", " ", " ", " ", " ", "O", " "])
